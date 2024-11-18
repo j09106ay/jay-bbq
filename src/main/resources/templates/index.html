@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>BBQ Events</title>
+</head>
+<body>
+    <h1>BBQ Events</h1>
+
+    <h2>Add a New BBQ</h2>
+    <form action="/bbq/details" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required><br>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required><br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea><br>
+
+        <button type="submit">Add BBQ</button>
+    </form>
+
+    <h2>Upcoming BBQs</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="bbq : ${bbqs}">
+                <td th:text="${bbq.name}"></td>
+                <td th:text="${bbq.location}"></td>
+                <td th:text="${bbq.date}"></td>
+                <td th:text="${bbq.description}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
